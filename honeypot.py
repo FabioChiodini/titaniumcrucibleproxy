@@ -46,7 +46,7 @@ app.wsgi_app = SaferProxyFix(app.wsgi_app)
 
 #host = os.environ['LOG_HOST']
 
-host = google.com
+host = 130.211.43.144
 
 test_logger = logging.getLogger('python-logstash-logger')
 test_logger.setLevel(logging.INFO)
