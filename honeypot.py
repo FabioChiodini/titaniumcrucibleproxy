@@ -1,13 +1,16 @@
 from flask import Flask, jsonify, request
+from werkzeug.contrib.fixers import ProxyFix
 import os
 import logging
 import logstash
 import sys
 
-if 'LOG_HOST' not in os.environ:
-    raise(Exception("LOG_HOST NOT DEFINED"))
+#if 'LOG_HOST' not in os.environ:
+#    raise(Exception("LOG_HOST NOT DEFINED"))
 
-host = os.environ['LOG_HOST']
+#host = os.environ['LOG_HOST']
+
+host = google.com
 
 test_logger = logging.getLogger('python-logstash-logger')
 test_logger.setLevel(logging.INFO)
@@ -26,6 +29,9 @@ def log_request(req):
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
+
+app.wsgi_app = ProxyFix(app.wsgi_app)
+
 def honey(path):
     log_request(request)
     return jsonify({'result': 'ok'})
