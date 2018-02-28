@@ -30,6 +30,8 @@ def log_request(req):
 def honey(path):
     log_request(request)
     return jsonify({'result': 'ok'})
+    # Test to return the client ip
+    # return request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0",port=8080)
